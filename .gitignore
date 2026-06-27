@@ -1,0 +1,38 @@
+# Virtual Environments & Caching
+env_ocr_new/
+__pycache__/
+*.pyc
+
+# Local Config & Temp Files
+.vscode/
+temp/
+scratch/
+address_normalization_backup.json
+normalized_stores.json
+*.sql
+!dump-gisdb-normalized.sql
+
+# Heavy Executables & Installers
+*.exe
+geoserver-3.0.0/
+
+# Heavy Machine Learning Models & Archives (GitHub has a 100MB file limit)
+*.pt
+*.pth
+*.whl
+*.zip
+*.onnx
+*.pkl
+Model_Training_And_Processing/models/
+Model_Training_And_Processing/*.pt
+Model_Training_And_Processing/*.pth
+Model_Training_And_Processing/*.pth*
+Model_Training_And_Processing/models/**
+Model_Training_And_Processing/model_phanloai_danhmuc_v7/
+Web_GIS_App/Sys/backend/api/model_phanloai_danhmuc_v7/
+Web_GIS_App/Sys/backend/api/models/
+
+# Node Modules (Frontend & Backend)
+Web_GIS_App/Sys/frontend/node_modules/
+Web_GIS_App/Sys/backend/node_modules/
+node_modules/
