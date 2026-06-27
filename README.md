@@ -3,7 +3,7 @@
 
 Chào mừng bạn đến với kho lưu trữ mã nguồn của đề tài nghiên cứu và phát triển **"Hệ thống Bản đồ số Web GIS tích hợp Đồ thị Tri thức phục vụ chuẩn hóa, quản lý dữ liệu biển hiệu cửa hàng tại quận Ninh Kiều, Cần Thơ"**.
 
-Dự án này là giải pháp toàn diện từ đầu-đến-cuối (End-to-End): bắt đầu từ việc thu thập hình ảnh biển hiệu cửa hàng thực tế, nhận diện và trích xuất chữ viết (OCR), chuẩn hóa và làm sạch dữ liệu địa chỉ bằng xử lý ngôn ngữ tự nhiên (NLP) với LLM và API bản đồ địa lý, lưu trữ vào cơ sở dữ liệu không gian PostGIS, phục vụ hiển thị bản đồ tương tác (Web GIS) cùng tính năng định tuyến lộ trình thông minh, và cuối cùng là mô hình hóa tri thức liên kết dưới dạng Đồ thị tri thức (Knowledge Graph - SignKG).
+Dự án này là giải pháp toàn diện từ đầu-đến-cuối (End-to-End): bắt đầu từ việc thu thập hình ảnh biển hiệu cửa hàng thực tế, nhận diện và trích xuất chữ viết (OCR), lưu trữ vào cơ sở dữ liệu không gian PostGIS, phục vụ hiển thị bản đồ tương tác (Web GIS) cùng tính năng định tuyến lộ trình thông minh, và cuối cùng là mô hình hóa tri thức liên kết dưới dạng Đồ thị tri thức (Knowledge Graph - SignKG).
 
 ---
 
@@ -15,8 +15,7 @@ Sơ đồ dưới đây thể hiện luồng xử lý dữ liệu và cách các
 flowchart TB
     %% Nodes representing inputs & processing
     raw_img[Hình ảnh Biển hiệu Thực tế] --> ocr_proc[Phân hệ Học máy & OCR<br/>Model_Training_And_Processing]
-    ocr_proc --> |Trích xuất text thô| nlp_norm[NLP Normalizer<br/>LLM + Từ điển địa phương]
-    nlp_norm --> |Địa chỉ đã chuẩn hóa| db[(CSDL Không gian PostGIS<br/>db_gis)]
+    ocr_proc --> |Trích xuất text & Tọa độ| db[(CSDL Không gian PostGIS<br/>db_gis)]
     
     %% Base Map & GIS Service
     osm_data[Dữ liệu Bản đồ OSM] --> geoserver[GeoServer Map Engine<br/>localhost:8080]
@@ -49,8 +48,8 @@ d:\LuanVan\
 │
 ├── Model_Training_And_Processing/  # Phân hệ Học máy & Xử lý OCR
 │   ├── Application_Version_8.py     # Ứng dụng chính nhận diện & ocr biển hiệu
-│   ├── tools/                       # Các công cụ chuẩn hóa thô ban đầu
-│   └── utils/                       # NLP Normalizer sử dụng LLM & Từ điển
+│   ├── tools/                       # Các công cụ phụ trợ
+│   └── utils/                       # Các tiện ích bổ trợ
 │
 ├── Web_GIS_App/                    # Phân hệ Ứng dụng Bản đồ Số Web GIS
 │   ├── Sys/
@@ -80,9 +79,6 @@ d:\LuanVan\
 * **Nhiệm vụ:** Phát hiện khu vực chứa chữ trên biển hiệu (Text Detection) và nhận diện văn bản (Text Recognition).
 * **Các thành phần cốt lõi:**
   * **Nhận diện biển hiệu:** Sử dụng các mô hình học sâu hiện đại (YOLOv8, PaddleOCR) để phát hiện và bóc tách chữ từ ảnh chụp biển hiệu (`Application_Version_8.py`).
-  * **Công cụ chuẩn hóa và làm sạch địa chỉ:**
-    * [llm_normalizer.py](file:///d:/LuanVan/Model_Training_And_Processing/utils/llm_normalizer.py): Áp dụng mô hình ngôn ngữ lớn (LLM) tích hợp với từ điển địa danh chi tiết của Cần Thơ (`can_tho_dictionary.md`) để tự động chuyển đổi các địa chỉ bị lỗi OCR thành địa chỉ hành chính hợp lệ.
-    * [normalize_addresses.py](file:///d:/LuanVan/Model_Training_And_Processing/tools/normalize_addresses.py): Script thực hiện chuẩn hóa địa chỉ hàng loạt từ cơ sở dữ liệu.
   * **Lưu ý:** Các file trọng số mô hình lớn (`.pt`, `.pth`, `.zip`) được cấu hình bỏ qua trong `.gitignore` để tối ưu dung lượng Git.
 
 ### 3. 🌐 Ứng Dụng Bản Đồ Số Web GIS (`Web_GIS_App/`)
@@ -202,7 +198,6 @@ python generate_graph.py
 ## 📈 Quy Trình Đồng Bộ & Liên Kết Dữ Liệu
 
 1. **Phát hiện & OCR**: Ảnh chụp thực tế đi qua phân hệ Học máy để trích xuất văn bản thô.
-2. **NLP & Định Vị**: Đoạn text địa chỉ được chuyển qua `llm_normalizer.py` để làm sạch, so khớp địa danh với từ điển, định vị GPS qua công cụ Geo-coding để lưu tọa độ chính xác.
-3. **Database**: Bản ghi thông tin hoàn chỉnh (Tên, địa chỉ chuẩn hóa, tọa độ hình học `geom`, số điện thoại) được lưu trữ vào PostgreSQL/PostGIS.
-4. **GeoServer**: Đọc bảng không gian từ database và phát tán thành các API bản đồ không gian dạng vector/raster phục vụ Frontend hiển thị.
-5. **Đồ Thị Tri Thức**: `generate_graph.py` kết nối trực tiếp đến bảng dữ liệu để trích xuất mối quan hệ topo học, tạo cấu trúc mạng lưới liên kết thông tin cho phép phân tích mạng lưới dịch vụ đô thị tại Ninh Kiều.
+2. **Database**: Bản ghi thông tin (Tên, địa chỉ, tọa độ hình học `geom`, số điện thoại) được lưu trữ vào PostgreSQL/PostGIS.
+3. **GeoServer**: Đọc bảng không gian từ database và phát tán thành các API bản đồ không gian dạng vector/raster phục vụ Frontend hiển thị.
+4. **Đồ Thị Tri Thức**: `generate_graph.py` kết nối trực tiếp đến bảng dữ liệu để trích xuất mối quan hệ topo học, tạo cấu trúc mạng lưới liên kết thông tin cho phép phân tích mạng lưới dịch vụ đô thị tại Ninh Kiều.
