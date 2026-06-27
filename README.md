@@ -12,6 +12,10 @@ Dự án được chia thành 3 phân vùng lớn chính như sau:
 
 ```plaintext
 d:\LuanVan\
+├── Documents/                       # Tài liệu nghiên cứu & Thuyết minh đề tài
+│   ├── Doc.docx                    # Bản thảo Đề tài Nghiên cứu chi tiết (Word format)
+│   └── Doc_2.pdf                   # Tài liệu báo cáo chính thức và các Phụ lục (PDF format)
+│
 ├── Model_Training_And_Processing/  # Phân hệ Học máy & Xử lý OCR
 │   ├── Application_Version_8.py     # Ứng dụng chính nhận diện & ocr biển hiệu
 │   ├── tools/                       # Các công cụ chuẩn hóa thô ban đầu
@@ -21,6 +25,8 @@ d:\LuanVan\
 │   ├── Sys/
 │   │   ├── frontend/               # Frontend ReactJS + Mapbox GL GIS
 │   │   └── backend/                # Backend ExpressJS + PostgreSQL/PostGIS
+│   │
+│   └── geoserver-3.0.0/            # Máy chủ chia sẻ bản đồ địa lý GeoServer
 │
 └── Graph_Visualization/             # Phân hệ Đồ thị Tri thức Độc lập (Knowledge Graph)
     ├── generate_graph.py            # Script tự động lấy dữ liệu từ DB & dựng đồ thị
@@ -29,6 +35,14 @@ d:\LuanVan\
 ```
 
 ---
+
+## 📁 Chi Tiết các Phân Hệ và Tài Liệu
+
+### 0. Tài Liệu Nghiên Cứu (`Documents`)
+* **Vai trò:** Lưu trữ toàn bộ tài liệu nghiên cứu học thuật, báo cáo thuyết minh đề tài và quy trình kỹ thuật.
+* **Chi tiết:**
+  * [Doc.docx](file:///d:/LuanVan/Documents/Doc.docx): Bản thuyết minh đề tài chi tiết của dự án, trình bày cơ sở lý thuyết và các thuật toán được áp dụng.
+  * [Doc_2.pdf](file:///d:/LuanVan/Documents/Doc_2.pdf): Bản báo cáo toàn văn (định dạng PDF) phục vụ công tác đánh giá và thẩm định đề tài.
 
 ## 1. Phân Hệ Học Máy & Xử Lý Biển Hiệu (`Model_Training_And_Processing`)
 * **Vai trò:** Huấn luyện mô hình phát hiện chữ viết trên biển hiệu cửa hàng (OCR) và xử lý phân loại danh mục kinh doanh.
