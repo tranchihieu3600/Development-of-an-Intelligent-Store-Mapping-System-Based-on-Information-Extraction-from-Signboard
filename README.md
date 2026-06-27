@@ -1,7 +1,7 @@
 # Hệ Thống Bản Đồ Số Web GIS & Đồ Thị Tri Thức Biển Hiệu Cửa Hàng
 ## (Development of an Intelligent Store Mapping System Based on Information Extraction from Signboard)
 
-Chào mừng bạn đến với kho lưu trữ mã nguồn của đề tài nghiên cứu và phát triển **"Hệ thống Bản đồ số Web GIS tích hợp Đồ thị Tri thức phục vụ chuẩn hóa, quản lý dữ liệu biển hiệu cửa hàng tại quận Ninh Kiều, Cần Thơ"**.
+Chào mừng bạn đến với kho lưu trữ mã nguồn của đề tài nghiên cứu và phát triển **"Hệ thống Bản đồ số Web GIS tích hợp Đồ thị Tri thức quản lý dữ liệu biển hiệu cửa hàng tại quận Ninh Kiều, Cần Thơ"**.
 
 Dự án này là giải pháp toàn diện từ đầu-đến-cuối (End-to-End): bắt đầu từ việc thu thập hình ảnh biển hiệu cửa hàng thực tế, nhận diện và trích xuất chữ viết (OCR), lưu trữ vào cơ sở dữ liệu không gian PostGIS, phục vụ hiển thị bản đồ tương tác (Web GIS) cùng tính năng định tuyến lộ trình thông minh, và cuối cùng là mô hình hóa tri thức liên kết dưới dạng Đồ thị tri thức (Knowledge Graph - SignKG).
 
