@@ -37,11 +37,38 @@ flowchart TB
     style kg_view fill:#BB8FCE,stroke:#333,stroke-width:2px
 ```
 
+## 📁 Cấu Trúc Thư Mục Dự Án (Repository Structure)
+
+Dự án được phân chia một cách khoa học thành các thư mục và phân vùng lớn chính như sau:
+
+```plaintext
+d:\LuanVan\
+├── Documents/                       # Tài liệu nghiên cứu & Thuyết minh đề tài
+│   ├── Doc.docx                    # Bản thảo Đề tài Nghiên cứu chi tiết (Word format)
+│   └── Doc_2.pdf                   # Tài liệu báo cáo chính thức và các Phụ lục (PDF format)
+│
+├── Model_Training_And_Processing/  # Phân hệ Học máy & Xử lý OCR
+│   ├── Application_Version_8.py     # Ứng dụng chính nhận diện & ocr biển hiệu
+│   ├── tools/                       # Các công cụ chuẩn hóa thô ban đầu
+│   └── utils/                       # NLP Normalizer sử dụng LLM & Từ điển
+│
+├── Web_GIS_App/                    # Phân hệ Ứng dụng Bản đồ Số Web GIS
+│   ├── Sys/
+│   │   ├── frontend/               # Frontend ReactJS + Mapbox GL GIS
+│   │   └── backend/                # Backend Django REST Framework + PostgreSQL/PostGIS
+│   │
+│   └── geoserver-3.0.0/            # Máy chủ chia sẻ bản đồ địa lý GeoServer
+│
+└── Graph_Visualization/             # Phân hệ Đồ thị Tri thức Độc lập (Knowledge Graph)
+    ├── generate_graph.py            # Script tự động lấy dữ liệu từ DB & dựng đồ thị
+    ├── signkg_graph.html            # Đồ thị tri thức biển hiệu tương tác 2D trực quan
+    └── graph_documentation.md       # Tài liệu kỹ thuật chi tiết về thực thể & liên kết
+```
+
 ---
 
-## 📁 Cấu Trúc Chi Tiết Các Phân Hệ
+## 📁 Chi Tiết các Phân Hệ và Tài Liệu
 
-Dự án được phân chia một cách khoa học thành các thư mục độc lập chịu trách nhiệm từng nhiệm vụ cụ thể:
 
 ### 1. 📄 Tài Liệu Nghiên Cứu (`Documents/`)
 * **Nhiệm vụ:** Lưu trữ các sản phẩm học thuật, thuyết minh đề tài nghiên cứu khoa học.
