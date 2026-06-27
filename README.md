@@ -72,9 +72,8 @@ d:\LuanVan\
 ### 1. 📄 Tài Liệu Nghiên Cứu (`Documents/`)
 * **Nhiệm vụ:** Lưu trữ các sản phẩm học thuật, thuyết minh đề tài nghiên cứu khoa học.
 * **Các tệp quan trọng:**
-  * [Doc.docx](file:///d:/LuanVan/Documents/Doc.docx): Bản thuyết minh đề tài nghiên cứu khoa học chi tiết (định dạng Word).
-  * [Doc_2.pdf](file:///d:/LuanVan/Documents/Doc_2.pdf): Bản báo cáo nghiệm thu chính thức và phụ lục liên quan (định dạng PDF).
-
+  * [Doc.docx](file:///d:/LuanVan/Documents/Doc.docx): Phân hệ 1: Phân hệ trích xuất thông tin từ biển hiệu.
+  * [Doc_2.pdf](file:///d:/LuanVan/Documents/Doc_2.pdf): Phân hệ 2: Xây dựng bản đồ thông minh.
 ### 2. 🧠 Phân Hệ Học Máy & OCR (`Model_Training_And_Processing/`)
 * **Nhiệm vụ:** Phát hiện khu vực chứa chữ trên biển hiệu (Text Detection) và nhận diện văn bản (Text Recognition).
 * **Các thành phần cốt lõi:**
