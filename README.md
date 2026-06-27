@@ -79,8 +79,10 @@ d:\LuanVan\
 ### 2. 🧠 Phân Hệ Học Máy & OCR (`Model_Training_And_Processing/`)
 * **Nhiệm vụ:** Phát hiện khu vực chứa chữ trên biển hiệu (Text Detection) và nhận diện văn bản (Text Recognition).
 * **Các thành phần cốt lõi:**
-  * **Nhận diện biển hiệu:** Sử dụng các mô hình học sâu hiện đại (YOLOv8, PaddleOCR) để phát hiện và bóc tách chữ từ ảnh chụp biển hiệu.
-  * **Chuẩn hóa ngôn ngữ (`utils/llm_normalizer.py`):** Áp dụng mô hình ngôn ngữ lớn (LLM) tích hợp với từ điển địa danh chi tiết của Cần Thơ (`can_tho_dictionary.md`) để tự động chuyển đổi các địa chỉ bị lỗi OCR thành địa chỉ hành chính hợp lệ.
+  * **Nhận diện biển hiệu:** Sử dụng các mô hình học sâu hiện đại (YOLOv8, PaddleOCR) để phát hiện và bóc tách chữ từ ảnh chụp biển hiệu (`Application_Version_8.py`).
+  * **Công cụ chuẩn hóa và làm sạch địa chỉ:**
+    * [llm_normalizer.py](file:///d:/LuanVan/Model_Training_And_Processing/utils/llm_normalizer.py): Áp dụng mô hình ngôn ngữ lớn (LLM) tích hợp với từ điển địa danh chi tiết của Cần Thơ (`can_tho_dictionary.md`) để tự động chuyển đổi các địa chỉ bị lỗi OCR thành địa chỉ hành chính hợp lệ.
+    * [normalize_addresses.py](file:///d:/LuanVan/Model_Training_And_Processing/tools/normalize_addresses.py): Script thực hiện chuẩn hóa địa chỉ hàng loạt từ cơ sở dữ liệu.
   * **Lưu ý:** Các file trọng số mô hình lớn (`.pt`, `.pth`, `.zip`) được cấu hình bỏ qua trong `.gitignore` để tối ưu dung lượng Git.
 
 ### 3. 🌐 Ứng Dụng Bản Đồ Số Web GIS (`Web_GIS_App/`)
@@ -88,7 +90,7 @@ d:\LuanVan\
 * **Kiến trúc thành phần:**
   * **Backend (`Sys/backend/`):** API viết bằng Django REST Framework & Django REST Framework GIS. Tích hợp giải thuật tìm đường đi ngắn nhất (Dijkstra, A*) chạy trên cấu trúc mạng lưới giao thông đường bộ được nhập từ OpenStreetMap (OSM).
   * **Frontend (`Sys/frontend/`):** Ứng dụng Single Page App ReactJS, tích hợp `react-leaflet` và OpenLayers để vẽ giao diện bản đồ, lớp ranh giới phường và hiển thị các lớp phủ dữ liệu.
-  * **GeoServer (`geoserver-3.0.0/`):** Đóng vai trò là Map Server cục bộ, biên dịch dữ liệu bản đồ OSM (`planet_osm_line`) và ranh giới hành chính từ database rồi cung cấp các dịch vụ bản đồ chuẩn OGC (WMS/WFS) cho Frontend.
+  * **GeoServer (`geoserver-3.0.0/`):** Đóng vai trò là Map Server cục bộ (được cấu hình bỏ qua trong `.gitignore` vì dung lượng lớn và mang tính chất môi trường local).
 
 ### 4. 📊 Đồ Thị Tri Thức Biển Hiệu (`Graph_Visualization/`)
 * **Nhiệm vụ:** Trực quan hóa tri thức kết nối đa chiều giữa Cửa hàng, Thương hiệu, Phân ngành dịch vụ, Tuyến đường, Phường hành chính dưới dạng mạng lưới Đồ thị Tri thức (Sign Knowledge Graph).
