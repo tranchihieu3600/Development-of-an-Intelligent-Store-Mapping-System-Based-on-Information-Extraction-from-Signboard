@@ -45,6 +45,9 @@ d:\LuanVan\
 ├── Documents/                       # Tài liệu nghiên cứu & Thuyết minh đề tài
 │   ├── Doc.docx                    # Bản thảo Đề tài Nghiên cứu chi tiết (Word format)
 │   └── Doc_2.pdf                   # Tài liệu báo cáo chính thức và các Phụ lục (PDF format)
+│   └── B2207520_TranChiHieu.pptx   # Tài liệu thuyết trình toàn bộ dự án.
+│   └── FDSE2026_PNHoang (9).pdf    # Tài liệu báo cáo khoa học với đồ thị liên kết tri thức
+|
 │
 ├── Model_Training_And_Processing/  # Phân hệ Học máy & Xử lý OCR
 │   ├── Application_Version_8.py     # Ứng dụng chính nhận diện & ocr biển hiệu
